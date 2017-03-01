@@ -2,9 +2,10 @@
 #include <fstream>
 #include <assert.h>
 #include <sstream>
+#include <cstring>
+#include <string>
 
 using namespace std;
-
 
 int FindDataFlag(const char *line)
 {
@@ -30,7 +31,7 @@ void GetData(char* source, int* data)
     char strData[4];
     char *strPos = strData;
     int dataIndex = 0;
-    cout << "extract data from " << source << endl;
+    std::cout << "extract data from " << source << std::endl;
     while (*source)
     {
         if ( ',' == *source )
@@ -61,31 +62,31 @@ void GetData(char* source, int* data)
 
 int main(int argc, char const *argv[])
 {
-    cout << "start reading data from file ..." << endl << endl;
+    std::cout << "start reading data from file ..." << std::endl << std::endl;
     ifstream dataFile("data.dat");
     assert(dataFile);
-    cout << "file open success ..." << endl << endl;
+    std::cout << "file open success ..." << std::endl << std::endl;
     char text[200];
     int line = 0;
     int data[4][200];
     while(dataFile.getline(text, 200))
     {
-        cout << "this is line " << line+1 << " of data.dat:" << endl;
-        cout << text << endl;
+        std::cout << "this is line " << line+1 << " of data.dat:" << std::endl;
+        std::cout << text << std::endl;
         int flagPos = FindDataFlag(text);
-        cout << "position of ':' is " << flagPos << endl;
+        std::cout << "position of ':' is " << flagPos << std::endl;
         GetData(&text[flagPos+2], data[line]);
-        cout << "data in this line: " << data[line][0] << ", "
+        std::cout << "data in this line: " << data[line][0] << ", "
                                       << data[line][1] << ", "
                                       << data[line][2] << ", "
                                       << data[line][3] << ", "
-                                      << endl << endl;
+                                      << std::endl << std::endl;
         line++;
     }
 
     if ( 0 == line )
     {
-        cout << "data.dat is empty" << endl;
+        std::cout << "data.dat is empty" << std::endl;
     }
 
     return 0;

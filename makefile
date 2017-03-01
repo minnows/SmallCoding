@@ -4,22 +4,28 @@ CC=g++
 CPPUTEST_HOME = /usr/local/Cellar/cpputest/3.8
 CPPFLAGS += -I$(CPPUTEST_HOME)/include/CppUTest
 LDFLAGS = -L$(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt 
+CPPFLAGS += -std=c++0x
 
-OBJs += test.o
-OBJs += book.o
-OBJs += testBook.o
+BUILD_DIR = target
 
-readfile: readfile.o
-	g++ readfile.o $(LDFLAGS) -o readfile
-	./readfile
+OBJs +=$(BUILD_DIR)/test.o
+OBJs +=$(BUILD_DIR)/book.o
+OBJs +=$(BUILD_DIR)/testBook.o
 
-test: test.o book.o testBook.o
-	g++ $(OBJs) $(LDFLAGS) -o test
-	./test
+$(BUILD_DIR)/%.o:%.cpp
+	g++ -c -o $@ $<
+
+#readfile: readfile.o
+#	g++ readfile.o $(LDFLAGS) -o readfile
+
+$(BUILD_DIR)/test:$(OBJs) 
+	g++ -o $@  $(LDFLAGS)
+#	./test
 clean:
-	rm *.o test readfile
-read_book.o: read_book.cpp
-testBook.o: testBook.cpp
-test.o: test.cpp
-book.o: book.cpp book.hpp
-readfile.o: readfile.cpp
+	rm $(BUILD_DIR)/* 
+
+#read_book.o: read_book.cpp
+#target/testBook.o: testBook.cpp
+#target/test.o: test.cpp
+#target/book.o: book.cpp book.hpp
+#readfile.o: readfile.cpp
