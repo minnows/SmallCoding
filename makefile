@@ -8,24 +8,15 @@ CPPFLAGS += -std=c++0x
 
 BUILD_DIR = target
 
-OBJs +=$(BUILD_DIR)/test.o
-OBJs +=$(BUILD_DIR)/book.o
-OBJs +=$(BUILD_DIR)/testBook.o
+OBJs +=test.o
+OBJs +=book.o
+OBJs +=testBook.o
 
-$(BUILD_DIR)/%.o:%.cpp
-	g++ -c -o $@ $<
+test:$(OBJs) 
+	g++ -o $(BUILD_DIR)/test $(OBJs)  $(LDFLAGS)
+	mv *.o target/
+	$(BUILD_DIR)/test
 
-#readfile: readfile.o
-#	g++ readfile.o $(LDFLAGS) -o readfile
-
-$(BUILD_DIR)/test:$(OBJs) 
-	g++ -o $@  $(LDFLAGS)
-#	./test
 clean:
 	rm $(BUILD_DIR)/* 
 
-#read_book.o: read_book.cpp
-#target/testBook.o: testBook.cpp
-#target/test.o: test.cpp
-#target/book.o: book.cpp book.hpp
-#readfile.o: readfile.cpp
