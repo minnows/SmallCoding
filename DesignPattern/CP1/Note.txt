@@ -1,0 +1,39 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Add new feature fly
+   Add to base class will cause Rubber Duck fly
+   Rewrite fly in child class  -----> code duplication think about adding a wooden duck
+   How about an interface ?  Multiple inheritance ? ---->  Code duplication.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+2. Way to fix
+   Identify the aspect of your applications that vary and separate tem from what stays the same  
+   Program to an interface not an implementation
+   Favor composition over inheritance
