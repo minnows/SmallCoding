@@ -10,3 +10,8 @@
    Identify the aspect of your applications that vary and separate them from what stays the same  
    Program to an interface not an implementation (means do not implement fly in duck or child class of duck)
    Favor composition over inheritance
+
+The Strategy Pattern defines a family of algorithms,
+encapsulates each one, and makes them interchangeable.
+Strategy lets the algorithm vary independently from
+clients that use it.
