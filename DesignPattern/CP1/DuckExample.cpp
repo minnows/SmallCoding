@@ -3,10 +3,26 @@
 
 using namespace std;
 
+class Flyer
+{
+public:
+    virtual void fly()
+    { }
+};
+
+class WingFlyer:public Flyer
+{
+public:
+    void fly()
+    {
+        cout << "fly with wings" << endl;
+    }
+};
+
 class Duck
 {
 public:
-    virtual  void quack()
+    virtual void quack()
     {
         cout << "quack quack" << endl;
     }
@@ -16,7 +32,13 @@ public:
         cout << "cannot display" << endl;
     }
 
+    virtual void fly()
+    {
+        flyer->fly();    
+    }
+
 protected:
+    Flyer* flyer;
 };
 
 class MallardDuck: public Duck
@@ -24,6 +46,7 @@ class MallardDuck: public Duck
 public:
     MallardDuck()
     {
+        flyer = new WingFlyer();
     }
 
     void display()
@@ -104,7 +127,8 @@ int main()
     }
     cout << endl;
     duck->display();
-    duck->quack();  
+    duck->quack();
+    duck->fly();  
     return 1;
 }
 
