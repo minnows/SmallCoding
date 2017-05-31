@@ -1,5 +1,5 @@
 #include <iostream>
-// this is code used to learn virtual class
+
 // this is a virtual class
 class VirtualClass
 {
