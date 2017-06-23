@@ -1,3 +1,4 @@
+This line will have conflict
 #include <stdio.h>
 #include "CppUTest/CommandLineTestRunner.h"
 int main(int ac, char** av)
