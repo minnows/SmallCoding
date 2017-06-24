@@ -1,4 +1,4 @@
-This line will have conflict
+I will merge this line
 #include <stdio.h>
 #include "CppUTest/CommandLineTestRunner.h"
 int main(int ac, char** av)
