@@ -13,7 +13,6 @@ OBJs +=book.o
 OBJs +=testBook.o
 
 test:$(OBJs) 
-	mkdir $(BUILD_DIR)
 	g++ -o $(BUILD_DIR)/test $(OBJs)  $(LDFLAGS)
 	mv *.o $(BUILD_DIR)
 	$(BUILD_DIR)/test
